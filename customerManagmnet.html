@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Management - Aneja Mall Admin Panel</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col">
+          <h2>Customer Management</h2>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <!-- Add button to create offers -->
+          <button
+            type="button"
+            class="btn btn-primary btn-send-offers"
+            data-toggle="modal"
+            data-target="#sendOffersModal"
+          >
+            Send Offers to All Customers
+          </button>
+          <button
+            type="button"
+            class="btn btn-success ml-2"
+            data-toggle="modal"
+            data-target="#createOfferModal"
+          >
+            Create Offer
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Customer ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Dummy customer data will be inserted here dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- Customer Details Modal -->
+    <div
+      class="modal fade"
+      id="customerDetailsModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="customerDetailsModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="customerDetailsModalLabel">
+              Customer Details
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td><strong>Customer ID</strong></td>
+                  <td><span id="customerID"></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Name</strong></td>
+                  <td><span id="customerName"></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Email</strong></td>
+                  <td><span id="customerEmail"></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Phone</strong></td>
+                  <td><span id="customerPhone"></span></td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <strong>Order History</strong>
+                    <ul id="orderHistory" class="list-unstyled mb-0"></ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary btn-send-email"
+              data-dismiss="modal"
+            >
+              Send Email
+            </button>
+            <button
+              type="button"
+              class="btn btn-success btn-send-notification"
+              data-dismiss="modal"
+            >
+              Send Notification
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Send Offers Modal -->
+    <div
+      class="modal fade"
+      id="sendOffersModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="sendOffersModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="sendOffersModalLabel">
+              Send Offers to All Customers
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Add form inputs for composing offers -->
+            <div class="form-group">
+              <label for="emailSubject">Email Subject:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="emailSubject"
+                placeholder="Exclusive Mega Sale - Limited Time Offer"
+              />
+            </div>
+            <div class="form-group">
+              <label for="emailContent">Email Content:</label>
+              <textarea
+                class="form-control"
+                id="emailContent"
+                placeholder="Dear valued customer, don't miss out on our exclusive Mega Sale! Enjoy huge discounts on a wide range of products. Shop now while stocks last!"
+                rows="4"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="messageContent">Message Content:</label>
+              <textarea
+                class="form-control"
+                id="messageContent"
+                placeholder="Hi there! We're excited to announce our Mega Sale happening now. Visit our website to discover amazing deals and discounts. Limited time offer, so hurry!"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary btn-send-offers-submit"
+            >
+              Send
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        // Dummy customer data
+        var customers = [
+          {
+            customerId: "C001",
+            name: "John Doe",
+            email: "john@example.com",
+            phone: "123-456-7890",
+          },
+          {
+            customerId: "C002",
+            name: "Jane Smith",
+            email: "jane@example.com",
+            phone: "987-654-3210",
+          },
+          {
+            customerId: "C003",
+            name: "Alice Johnson",
+            email: "alice@example.com",
+            phone: "555-123-4567",
+          },
+        ];
+
+        // Populate customer table
+        var customerTableBody = $("#customerTableBody");
+        customers.forEach(function (customer, index) {
+          var row =
+            "<tr>" +
+            "<td>" +
+            (index + 1) +
+            "</td>" +
+            "<td>" +
+            customer.customerId +
+            "</td>" +
+            "<td>" +
+            customer.name +
+            "</td>" +
+            "<td>" +
+            customer.email +
+            "</td>" +
+            "<td>" +
+            customer.phone +
+            "</td>" +
+            '<td><button type="button" class="btn btn-primary btn-view-details" data-toggle="modal" data-target="#customerDetailsModal" data-customer-id="' +
+            customer.customerId +
+            '">View Details</button></td>' +
+            "</tr>";
+          customerTableBody.append(row);
+        });
+      });
+      // Handle button click to open offer modal
+      $(document).on("click", ".btn-send-offers", function () {
+        $('.sendOffersModall').modal('show');
+      });
+
+      // Dummy function to send offers to all customers
+      function sendOffersToAllCustomers(
+        emailSubject,
+        emailContent,
+        messageContent
+      ) {
+        // Implement logic to send offers via email and message
+        console.log("Sending offers to all customers...");
+        console.log("Email Subject:", emailSubject);
+        console.log("Email Content:", emailContent);
+        console.log("Message Content:", messageContent);
+      }
+
+      // Handle button click to send offers
+      $(document).on("click", ".btn-send-offers-submit", function () {
+        var emailSubject = $("#emailSubject").val();
+        var emailContent = $("#emailContent").val();
+        var messageContent = $("#messageContent").val();
+        sendOffersToAllCustomers(emailSubject, emailContent, messageContent);
+        $("#sendOffersModal").modal("hide");
+      });
+    </script>
+  </body>
+</html>

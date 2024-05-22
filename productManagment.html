@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Admin Panel</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        background: linear-gradient(to bottom, #ffffff, #f3f3f3);
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      select,
+      textarea,
+      input[type="number"],
+      input[type="file"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        transition: border-color 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      select:focus,
+      textarea:focus,
+      input[type="number"]:focus,
+      input[type="file"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      .size-options {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .size-checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .size-checkboxes input[type="checkbox"] {
+        display: none;
+      }
+
+      .size-checkboxes label {
+        display: inline-block;
+        position: relative;
+        padding-left: 30px;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+
+      .size-checkboxes label::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #666;
+        background-color: #fff;
+      }
+
+      .size-checkboxes label::after {
+        content: "\2713";
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        font-size: 14px;
+        color: #fff;
+        display: none;
+      }
+
+      .size-checkboxes input[type="checkbox"]:checked + label::before {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+      .size-checkboxes input[type="checkbox"]:checked + label::after {
+        display: block;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .small-text {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Add a New Product</h2>
+      <form id="addProductForm">
+        <div class="form-group animated-input">
+          <label for="productName">Product Name</label>
+          <input type="text" id="productName" name="productName" required />
+        </div>
+        <div class="form-group animated-input">
+          <label for="productCategory">Category</label>
+          <select id="productCategory" name="productCategory" required>
+            <option value="" disabled selected>Select Category</option>
+            <option value="Sarees">Sarees</option>
+            <option value="Suits">Suits</option>
+            <option value="Lehnga">Lehnga</option>
+            <option value="Gowns">Gowns</option>
+            <option value="Kurti">Kurti</option>
+            <option value="Create New One">Create New One</option>
+          </select>
+          <input
+            type="text"
+            id="newCategoryInput"
+            name="newCategoryInput"
+            placeholder="Enter new category"
+            style="display: none"
+          />
+        </div>
+        <div class="form-group animated-input">
+          <label for="productCollection">Collection</label>
+          <select id="productCollection" name="productCollection" required>
+            <option value="" disabled selected>Select Collection</option>
+            <option value="New Arrivals">New Arrivals</option>
+            <option value="Sale">Sale</option>
+            <option value="Best Seller">Best Seller</option>
+            <option value="Event Wear">Event Wear</option>
+            <option value="Create New One">Create New One</option>
+          </select>
+          <input
+            type="text"
+            id="discountInput"
+            name="discountInput"
+            placeholder="Discount (amount or percentage)"
+            style="display: none"
+          />
+          <input
+            type="text"
+            id="newCollectionInput"
+            name="newCollectionInput"
+            placeholder="Enter new collection"
+            style="display: none"
+          />
+        </div>
+        <div class="form-group animated-input">
+          <label for="productDescription">Description</label>
+          <textarea
+            id="productDescription"
+            name="productDescription"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group animated-input">
+          <label for="productPrice">Price</label>
+          <input
+            type="number"
+            id="productPrice"
+            name="productPrice"
+            min="0"
+            step="0.01"
+            required
+          />
+        </div>
+        <div class="form-group size-options">
+          <label>Available Sizes</label>
+          <div class="size-checkboxes">
+            <input
+              type="checkbox"
+              id="sizeXXS"
+              name="productSizes"
+              value="XXS"
+            />
+            <label for="sizeXXS">XXS</label>
+            <input type="checkbox" id="sizeXS" name="productSizes" value="XS" />
+            <label for="sizeXS">XS</label>
+            <input type="checkbox" id="sizeS" name="productSizes" value="S" />
+            <label for="sizeS">S</label>
+            <input type="checkbox" id="sizeM" name="productSizes" value="M" />
+            <label for="sizeM">M</label>
+            <input type="checkbox" id="sizeL" name="productSizes" value="L" />
+            <label for="sizeL">L</label>
+            <input type="checkbox" id="sizeXL" name="productSizes" value="XL" />
+            <label for="sizeXL">XL</label>
+            <input
+              type="checkbox"
+              id="sizeXXL"
+              name="productSizes"
+              value="XXL"
+            />
+            <label for="sizeXXL">XXL</label>
+            <input
+              type="checkbox"
+              id="sizeXXXL"
+              name="productSizes"
+              value="XXXL"
+            />
+            <label for="sizeXXXL">XXXL</label>
+          </div>
+        </div>
+        <div class="form-group animated-input">
+          <label for="productQuantity">Quantity</label>
+          <input
+            type="number"
+            id="productQuantity"
+            name="productQuantity"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-group animated-input">
+          <label for="productImages">Images (Up to 4)</label>
+          <input
+            type="file"
+            id="productImages"
+            name="productImages[]"
+            accept="image/*"
+            multiple
+            required
+          />
+          <small>Hold Ctrl/Cmd to select multiple images</small>
+        </div>
+        <div class="form-group animated-input">
+          <label for="productColors">Colors</label>
+          <input
+            type="text"
+            id="productColors"
+            name="productColors"
+            placeholder="Enter colors separated by commas (e.g., Red, Blue, Green)"
+            required
+          />
+        </div>
+        <div class="form-group animated-input">
+          <label for="productHighlights">Highlights</label>
+          <textarea
+            id="productHighlights"
+            name="productHighlights"
+            placeholder="Enter highlights separated by commas"
+            required
+          ></textarea>
+        </div>
+        <!--  <div class="form-group animated-input">
+          <label for="productReviews">Reviews</label>
+          <input
+            type="number"
+            id="averageRating"
+            name="averageRating"
+            placeholder="Average rating"
+            min="0"
+            max="5"
+            step="0.1"
+            required
+          />
+          <input
+            type="number"
+            id="totalReviews"
+            name="totalReviews"
+            placeholder="Total reviews"
+            min="0"
+            required
+          />
+          <input
+            type="url"
+            id="reviewsLink"
+            name="reviewsLink"
+            placeholder="Link to reviews"
+          />
+        </div>-->
+        <button type="submit">Add Product</button>
+      </form>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script src="./js/productManag.js"></script>
+
+    <script>
+      document
+        .getElementById("productCategory")
+        .addEventListener("change", function () {
+          if (this.value === "Create New One") {
+            document.getElementById("newCategoryInput").style.display = "block";
+          } else {
+            document.getElementById("newCategoryInput").style.display = "none";
+          }
+        });
+
+      document
+        .getElementById("productCollection")
+        .addEventListener("change", function () {
+          if (this.value === "Create New One") {
+            document.getElementById("newCollectionInput").style.display =
+              "block";
+            document.getElementById("discountInput").style.display = "block";
+          } else {
+            document.getElementById("newCollectionInput").style.display =
+              "none";
+            document.getElementById("discountInput").style.display = "none";
+          }
+        });
+    </script>
+  </body>
+</html>

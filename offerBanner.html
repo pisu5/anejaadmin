@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offer Banner</title>
+    <link rel="stylesheet" href="./css/addBanner.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Admin Panel</h1>
+      <form id="uploadForm">
+        <div class="form-group">
+          <label for="bannerFile">Choose Banner:</label>
+          <input
+            type="file"
+            id="bannerFile"
+            name="bannerFile"
+            accept="image/*"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bannerSize">Banner Size:</label>
+          <input
+            type="text"
+            id="bannerSize"
+            name="bannerSize"
+            placeholder="Enter banner size (e.g., 300x250)"
+            required
+          />
+        </div>
+        <button type="submit">Upload Banner</button>
+      </form>
+
+      <div id="bannerPreviewContainer" style="display: none">
+        <h2>Banner Preview</h2>
+        <img id="bannerPreview" src="" alt="Banner Preview" />
+      </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <!-- Include Firebase Storage -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script src="./js/offerrBanner.js"></script>
+  </body>
+</html>

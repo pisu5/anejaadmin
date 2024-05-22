@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/index.css" />
+    <!-- Your custom CSS file -->
+  </head>
+  <body>
+    <header class="header">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+          <a class="navbar-brand" href="#"> Aneja Mall </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./productManagment.html">Products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Orders</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Customers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./addStory.html">Add Story</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./addBanner.html">Add banner</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./offerBanner.html">Add OfferBanner</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./highlightText.html">Add Highlighted Text</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#"> Dashboard </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./productManagment.html">
+                  Products Managment
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Orders </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Customers </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./addStory.html">Add Story</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./addBanner.html">Add banner</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./productManagment.html">Add Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./highlightText.html">Add Highlighted Text</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Announce Sale</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"> Settings </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <!-- Page Content -->
+        <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4">
+          <div class="content">
+            <div class="jumbotron">
+              <h1>Welcome to Aneja Mall Admin Panel</h1>
+              <p class="lead">
+                Manage your store efficiently with our powerful tools.
+              </p>
+              <hr class="my-4" />
+              <p>
+                Get insights, manage products, handle orders, and much more!
+              </p>
+              <a class="btn btn-primary btn-lg" href="#" role="button"
+                >Learn more</a
+              >
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(255, 99, 132)"
+                  >
+                    <h5 class="card-title">Sales Overview</h5>
+                    <p class="card-text">
+                      View your sales performance at a glance.
+                    </p>
+                    <a href="#" class="btn btn-outline-light">View Details</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(54, 162, 235)"
+                  >
+                    <h5 class="card-title">Product Management</h5>
+                    <p class="card-text">
+                      Add, edit, or remove products with ease.
+                    </p>
+                    <a href="#" class="btn btn-outline-light"
+                      >Manage Products</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(255, 205, 86)"
+                  >
+                    <h5 class="card-title">Order Management</h5>
+                    <p class="card-text">
+                      Process orders, track shipments, and manage payments.
+                    </p>
+                    <a href="#" class="btn btn-outline-light">Manage Orders</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(75, 192, 192)"
+                  >
+                    <h5 class="card-title">Customer Management</h5>
+                    <p class="card-text">
+                      Manage customer information, preferences, and
+                      interactions.
+                    </p>
+                    <a href="#" class="btn btn-outline-light"
+                      >Manage Customers</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(153, 102, 255)"
+                  >
+                    <h5 class="card-title">Inventory Management</h5>
+                    <p class="card-text">
+                      Track and manage your inventory levels and stock.
+                    </p>
+                    <a href="#" class="btn btn-outline-light"
+                      >Manage Inventory</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card mb-4">
+                  <div
+                    class="card-body rgb-card"
+                    style="background-color: rgb(255, 159, 64)"
+                  >
+                    <h5 class="card-title">Promotions</h5>
+                    <p class="card-text">
+                      Create and manage promotional campaigns and discounts.
+                    </p>
+                    <a href="#" class="btn btn-outline-light"
+                      >Manage Promotions</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">Sales Overview Chart</h5>
+                    <canvas id="salesChart" width="400" height="200"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+    <script src="./js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
