@@ -22,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const productCategory = document.getElementById("productCategory");
   const productCollection = document.getElementById("productCollection");
   const addProductForm = document.getElementById("addProductForm");
+  const loader = document.getElementById("loader");
 
   if (productCategory && productCollection && addProductForm) {
     console.log("Elements found");
@@ -102,10 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (selectedCollection === "Create New One") {
         selectedCollection =
           document.getElementById("newCollectionInput").value;
-      }// else if (selectedCollection === "Sale") {
-       // selectedCollection = discount;
-        
-      //}
+      }
 
       if (productImages.length < 4) {
         alert("Please upload at least 4 images.");
@@ -113,11 +111,16 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       try {
+        // Show the loader
+        loader.style.display = "block";
+
         console.log("Starting to add product...");
         const productId = database.ref("AdminData/Products").push().key;
         console.log("Generated product ID:", productId);
+
         const imageUrls = await uploadImages(productImages, productId);
         console.log("Image URLs:", imageUrls);
+
         await saveDataToDatabase(
           productName,
           productDescription,
@@ -136,6 +139,9 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         console.error("Error:", error);
         alert("An error occurred while adding the product. Please try again.");
+      } finally {
+        // Hide the loader
+        loader.style.display = "none";
       }
     });
   } else {

@@ -1,51 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Offer Banner</title>
-  <link rel="stylesheet" href="./css/addBanner.css">
-</head>
-<body>
-  <div class="container">
-    <h1>Admin Panel</h1>
-    <form id="uploadForm">
-      <div class="form-group">
-        <label for="bannerFileDesktop">Choose Desktop Banner:</label>
-        <input type="file" id="bannerFileDesktop" name="bannerFileDesktop" accept="image/*" required>
-      </div>
-      <div class="form-group">
-        <label for="bannerSizeDesktop">Desktop Banner Size:</label>
-        <input type="text" id="bannerSizeDesktop" name="bannerSizeDesktop" placeholder="Enter desktop banner size (e.g., 1920x1080)" required>
-      </div>
-      <div class="form-group">
-        <label for="bannerFileMobile">Choose Mobile Banner:</label>
-        <input type="file" id="bannerFileMobile" name="bannerFileMobile" accept="image/*" required>
-      </div>
-      <div class="form-group">
-        <label for="bannerSizeMobile">Mobile Banner Size:</label>
-        <input type="text" id="bannerSizeMobile" name="bannerSizeMobile" placeholder="Enter mobile banner size (e.g., 1080x1920)" required>
-      </div>
-      <button type="submit">Upload Banners</button>
-    </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offer Banner</title>
+    <link rel="stylesheet" href="./css/addBanner.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Admin Panel</h1>
+      <form id="uploadForm">
+        <div class="form-group">
+          <!--Used to add banner types-->
+          <label for="text">Enter Types Of Banner</label>
+          <select name="Choose" id="bannerType">
+            <option value="sarees">sarees</option>
+            <option value="Gowns">Gowns</option>
+            <option value="Lehnga">Lehnga</option>
+            <option value="Kurti">Kurti</option>
+            <option value="Suits">Suits</option>
+          </select>
+          <label for="bannerFileDesktop">Choose Desktop Banner:</label>
+          <input
+            type="file"
+            id="bannerFileDesktop"
+            name="bannerFileDesktop"
+            accept="image/*"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bannerSizeDesktop">Desktop Banner Size:</label>
+          <input
+            type="text"
+            id="bannerSizeDesktop"
+            name="bannerSizeDesktop"
+            placeholder="Enter desktop banner size (e.g., 1920x1080)"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bannerFileMobile">Choose Mobile Banner:</label>
+          <input
+            type="file"
+            id="bannerFileMobile"
+            name="bannerFileMobile"
+            accept="image/*"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="bannerSizeMobile">Mobile Banner Size:</label>
+          <input
+            type="text"
+            id="bannerSizeMobile"
+            name="bannerSizeMobile"
+            placeholder="Enter mobile banner size (e.g., 1080x1920)"
+            required
+          />
+        </div>
+        <button type="submit">Upload Banners</button>
+      </form>
 
-    <div id="bannerPreviewContainer" style="display: none">
-      <h2>Banner Preview</h2>
-      <div id="bannerPreviewDesktopContainer">
-        <h3>Desktop Banner</h3>
-        <img id="bannerPreviewDesktop" src="" alt="Desktop Banner Preview">
-      </div>
-      <div id="bannerPreviewMobileContainer">
-        <h3>Mobile Banner</h3>
-        <img id="bannerPreviewMobile" src="" alt="Mobile Banner Preview">
+      <div id="bannerPreviewContainer" style="display: none">
+        <h2>Banner Preview</h2>
+        <div id="bannerPreviewDesktopContainer">
+          <h3>Desktop Banner</h3>
+          <img id="bannerPreviewDesktop" src="" alt="Desktop Banner Preview" />
+        </div>
+        <div id="bannerPreviewMobileContainer">
+          <h3>Mobile Banner</h3>
+          <img id="bannerPreviewMobile" src="" alt="Mobile Banner Preview" />
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
-  <script src="./js/addBanner.js"></script>
-</body>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script src="./js/addBanner.js"></script>
+  </body>
 </html>

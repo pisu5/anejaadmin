@@ -4,7 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Story Section</title>
-    <link rel="stylesheet" href="./css/story.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 800px;
+            width: 100%;
+            background: linear-gradient(to bottom, #ffffff, #f3f3f3);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .product-image, .product-details {
+            flex: 1 1 300px;
+            padding: 20px;
+        }
+        .product-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        h1, h2, h3 {
+            margin: 0 0 10px;
+        }
+        p {
+            margin: 0 0 10px;
+        }
+        .price {
+            font-size: 24px;
+            color: #007bff;
+        }
+        .upload-section form {
+            display: flex;
+            flex-direction: column;
+        }
+        .upload-section input[type="file"] {
+            margin-bottom: 10px;
+        }
+        .upload-section button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .upload-section button:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .product {
+                flex-direction: column;
+            }
+            .product-image, .product-details {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,8 +106,8 @@
                 </div>
                 <div class="upload-section">
                     <h3>Upload Your Story</h3>
-                    <form action="#" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png">
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <input type="file" name="file" id="file" accept=".jpg, .jpeg, .png, .mp4, .mov">
                         <label for="file">Choose a file</label>
                         <button type="submit">Upload</button>
                     </form>
@@ -36,5 +118,57 @@
     <footer>
         <p>&copy; 2024 Our Ecommerce Store</p>
     </footer>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-database.js"></script>
+    <script>
+        // Your Firebase configuration
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var storage = firebase.storage();
+        var database = firebase.database();
+
+        document.getElementById('uploadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var file = document.getElementById('file').files[0];
+            if (file) {
+                var storageRef = storage.ref('uploads/' + file.name);
+                var uploadTask = storageRef.put(file);
+
+                uploadTask.on('state_changed', function(snapshot) {
+                    // Handle progress
+                }, function(error) {
+                    // Handle error
+                    console.error(error);
+                }, function() {
+                    // Handle successful upload
+                    uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+                        // Store file info in database
+                        var newFileRef = database.ref('files').push();
+                        newFileRef.set({
+                            url: downloadURL,
+                            name: file.name,
+                            type: file.type
+                        }).then(function() {
+                            alert('File uploaded successfully!');
+                        }).catch(function(error) {
+                            console.error('Error storing file info:', error);
+                        });
+                    });
+                });
+            } else {
+                alert('No file selected.');
+            }
+        });
+    </script>
 </body>
 </html>

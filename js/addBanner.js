@@ -24,6 +24,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
   const mobileFile = document.getElementById("bannerFileMobile").files[0];
   const desktopSize = document.getElementById("bannerSizeDesktop").value;
   const mobileSize = document.getElementById("bannerSizeMobile").value;
+  const bannerType = document.getElementById("bannerType").value;
 
   if (!desktopFile || !mobileFile) {
     alert("Please select both desktop and mobile banner files.");
@@ -37,7 +38,7 @@ document.getElementById("uploadForm").addEventListener("submit", async (e) => {
     const desktopUrl = await desktopSnapshot.ref.getDownloadURL();
     const mobileUrl = await mobileSnapshot.ref.getDownloadURL();
 
-    await saveBannerData(desktopUrl, desktopSize, "desktop");
+    await saveBannerData(desktopUrl, desktopSize, "desktop", bannerType);
     await saveBannerData(mobileUrl, mobileSize, "mobile");
 
     showBannerPreview(desktopUrl, "desktop");
@@ -55,11 +56,12 @@ function uploadFile(file, type) {
   return storageRef.put(file);
 }
 
-function saveBannerData(url, size, type) {
+function saveBannerData(url, size, type, bannerType = null) {
   const bannerRef = database.ref(`AdminData/Banners/${type}`).push();
   return bannerRef.set({
     url: url,
     size: size,
+    BannerType: bannerType,
   });
 }
 
