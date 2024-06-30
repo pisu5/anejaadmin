@@ -1,0 +1,179 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f0f0f0; /* Example background color */
+}
+
+.admin-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Additional styles for switches and total products */
+.header-controls {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 0 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #007bff; /* Example checked background color */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switch-label {
+  margin-left: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.total-products {
+  margin-right: auto;
+  font-size: 14px;
+  color: #555;
+}
+
+header {
+  background-color: #333; /* Example header background color */
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+#productTable {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#productTable th,
+#productTable td {
+  padding: 12px;
+  text-align: left;
+}
+
+#productTable th {
+  background-color: #f0f0f0; /* Example table header background color */
+  font-weight: bold;
+}
+
+#productTable td img {
+  max-width: 50px;
+  max-height: 50px;
+  display: block;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Example button color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Example button hover color */
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 20px;
+  }
+}
